@@ -87,6 +87,69 @@
 
 
 
+// const express = require('express');
+// const cors = require('cors');
+// const multer = require('multer');
+// const cloudinary = require('cloudinary').v2;
+// const { CloudinaryStorage } = require('multer-storage-cloudinary');
+// const mongoose = require('mongoose');
+// const app = express();
+
+// // Enable CORS
+// app.use(cors());
+
+// // MongoDB connection setup
+// mongoose.connect('mongodb://localhost:27017/Restuarent', { useNewUrlParser: true, useUnifiedTopology: true });
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// // Cloudinary configuration
+// cloudinary.config({
+//   cloud_name: 'dhnfyb9bw',
+//   api_key: '377977664553313',
+//   api_secret: 'aDFluxAwYLUgfmgQlU11oIpMmGI'
+// });
+
+// // Define a schema for storing images (you can choose to omit this if you're not storing images locally)
+// const imageSchema = new mongoose.Schema({
+//   publicId: String,
+//   uploadDateTime: { type: Date, default: Date.now }
+// });
+// const Image = mongoose.model('Image', imageSchema);
+
+// // Multer storage configuration for Cloudinary
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: {
+//     folder: 'uploads', // Change this to your desired folder in Cloudinary
+//     allowed_formats: ['jpg', 'png'],
+//     transformation: [{ width: 500, height: 500, crop: 'limit' }] // Adjust the transformation as needed
+//   }
+// });
+// const upload = multer({ storage: storage });
+
+// // API endpoint for uploading images
+// app.post('/api/upload', upload.single('image'), async (req, res) => {
+//   try {
+//     // Save the image details to MongoDB (optional)
+//     const newImage = new Image({
+//       publicId: req.file.public_id
+//     });
+//     await newImage.save();
+
+//     res.json({ success: true });
+//   } catch (error) {
+//     console.error('Error uploading image:', error);
+//     res.status(500).json({ error: 'Failed to upload image' });
+//   }
+// });
+
+// // Start the server
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
@@ -110,13 +173,6 @@ cloudinary.config({
   api_secret: 'aDFluxAwYLUgfmgQlU11oIpMmGI'
 });
 
-// Define a schema for storing images (you can choose to omit this if you're not storing images locally)
-const imageSchema = new mongoose.Schema({
-  publicId: String,
-  uploadDateTime: { type: Date, default: Date.now }
-});
-const Image = mongoose.model('Image', imageSchema);
-
 // Multer storage configuration for Cloudinary
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
@@ -131,13 +187,13 @@ const upload = multer({ storage: storage });
 // API endpoint for uploading images
 app.post('/api/upload', upload.single('image'), async (req, res) => {
   try {
-    // Save the image details to MongoDB (optional)
-    const newImage = new Image({
-      publicId: req.file.public_id
-    });
-    await newImage.save();
+    // If you want to save the image details to MongoDB
+    // const newImage = new Image({
+    //   publicId: req.file.public_id
+    // });
+    // await newImage.save();
 
-    res.json({ success: true });
+    res.json({ success: true, url: req.file.path }); // Return the URL of the uploaded image
   } catch (error) {
     console.error('Error uploading image:', error);
     res.status(500).json({ error: 'Failed to upload image' });
@@ -149,4 +205,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
