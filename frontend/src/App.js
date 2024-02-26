@@ -1,7 +1,9 @@
 
 import './App.css';
+//import ImageCapture from './Components/CaptureImage/ImageCapture';
 
 import CaptureImage from './Components/CaptureImage/CaptureImage';
+
 
 
 
@@ -11,6 +13,8 @@ function App() {
     <div className="App">
       
     <CaptureImage/>
+    {/* <ImageCapture/> */}
+    
   
     </div>
   );
