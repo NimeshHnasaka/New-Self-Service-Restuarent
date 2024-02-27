@@ -36,15 +36,7 @@ const CaptureImage = () => {
             console.error('Error capturing and uploading image:', error);
             setLoading(false);
           }
-   
-   
-   
-   
-   
-   
-   
-   
-    };
+   };
 
 
     const dataURItoBlob = (dataURI) => {
@@ -58,16 +50,8 @@ const CaptureImage = () => {
         return new Blob([ab], { type: mimeString });
       };
 
-
-
-
-
-
-
-
-
-
-    return (
+      
+      return (
         <div className="capture-image-container">
             {imageUrl ?(
                 <ObjectDetection capturedImage={capturedImage} />
@@ -96,3 +80,4 @@ const CaptureImage = () => {
 };
 
 export default CaptureImage;
+

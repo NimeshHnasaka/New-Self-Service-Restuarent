@@ -101,3 +101,4 @@ const Payment = ({ totalBill, referenceNumber }) => {
 };
 
 export default Payment;
+

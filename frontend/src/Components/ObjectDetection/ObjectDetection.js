@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import React, { useEffect, useState } from 'react';
-import * as tf from '@tensorflow/tfjs';
+//import * as tf from '@tensorflow/tfjs';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import TotalBill from '../TotalBill/TotalBill';
 import './ObjectDetection.css'
@@ -114,6 +114,4 @@ const ObjectDetection = ({ capturedImage }) => {
 };
 
 export default ObjectDetection;
-
-
 
