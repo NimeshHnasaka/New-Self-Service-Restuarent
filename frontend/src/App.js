@@ -1,8 +1,9 @@
 
 import './App.css';
+import CheckImage from './Components/ObjectDetection/CheckImage';
 
 
-import CaptureImage from './Components/CaptureImage/CaptureImage';
+//import CaptureImage from './Components/CaptureImage/CaptureImage';
 
 
 
@@ -12,8 +13,9 @@ function App() {
   return (
     <div className="App">
       
-    <CaptureImage/>
+    {/* <CaptureImage/> */}
    
+   <CheckImage/>
     
   
     </div>

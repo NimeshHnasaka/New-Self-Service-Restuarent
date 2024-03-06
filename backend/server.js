@@ -8,7 +8,7 @@ const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const mongoose = require('mongoose');
 const app = express();
-
+const axios = require('axios');
 
 
 
@@ -168,11 +168,11 @@ app.post('/api/detectObjects', async (req, res) => {
 
 
 
-app.get('/model.json', async (req, res) => {
+app.get('/api/model.json', async (req, res) => {
   try {
     // Fetch the model JSON file from GitHub
    // const { data } = await axios.get('https://raw.githubusercontent.com/NimeshHnasaka/New-Self-Service-Restuarent/Test3/frontend/src/tfjs.model/model.json');
-   const { data } = await axios.get('https://github.com/NimeshHnasaka/New-Self-Service-Restuarent/blob/ff3dc8a9b7de7aaa5672912810f0f30cf6b80a27/frontend/src/tfjs.model/model.json');
+   const { data } = await axios.get('https://github.com/NimeshHnasaka/New-Self-Service-Restuarent/blob/6e8ebfd7d99e4e07cb6efccf8bf6fbbe0cfc9b1c/backend/tfjs.model/model.json');
    
    // Set the appropriate headers
     res.setHeader('Content-Type', 'application/json');
