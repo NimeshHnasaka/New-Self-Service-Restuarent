@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import React, { useEffect, useState } from 'react';
-//import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import TotalBill from '../TotalBill/TotalBill';
 import './ObjectDetection.css'
@@ -69,8 +69,36 @@ const ObjectDetection = ({ capturedImage }) => {
         return objectQuantity;
     };
 
-  
-   
+
+
+    //const [model, setModel] = useState(null);
+
+
+
+  //   useEffect(() => {
+  //     const loadModel = async () => {
+  //         try {
+  //             setLoading(true);
+
+  //             // Load the pre-trained model
+  //             const loadedModel = await tf.loadLayersModel('d:\tfjs.model');
+
+  //             // Set the loaded model to state
+  //             setModel(loadedModel);
+
+  //             setLoading(false);
+  //         } catch (error) {
+  //             console.error('Error loading model:', error);
+  //             setLoading(false);
+  //         }
+  //     };
+
+  //     // Call loadModel when component mounts
+  //     loadModel();
+  // }, []);
+
+
+
 
     return (
         <div className='capture-image-container'>
