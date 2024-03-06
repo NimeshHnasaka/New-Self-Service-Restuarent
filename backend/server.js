@@ -21,7 +21,7 @@ app.use(cors());
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.json());
 
 
 
@@ -167,6 +167,24 @@ app.post('/api/detectObjects', async (req, res) => {
 
 
 
+
+app.get('/model.json', async (req, res) => {
+  try {
+    // Fetch the model JSON file from GitHub
+   // const { data } = await axios.get('https://raw.githubusercontent.com/NimeshHnasaka/New-Self-Service-Restuarent/Test3/frontend/src/tfjs.model/model.json');
+   const { data } = await axios.get('https://github.com/NimeshHnasaka/New-Self-Service-Restuarent/blob/ff3dc8a9b7de7aaa5672912810f0f30cf6b80a27/frontend/src/tfjs.model/model.json');
+   
+   // Set the appropriate headers
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Send the model JSON file as the response
+    res.send(data);
+  } catch (error) {
+    // Handle errors
+    console.error('Error fetching model:', error);
+    res.status(500).send('Error fetching model');
+  }
+});
 
 
 
