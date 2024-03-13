@@ -2,6 +2,7 @@
 import './App.css';
 
 import CaptureImage from './Components/CaptureImage/CaptureImage';
+//import ObjectDetectionGrahpmodel from './Components/ObjectDetection/ObjectDetectiongrahpmodel';
 
 
 
@@ -11,7 +12,8 @@ function App() {
     <div className="App">
       
     <CaptureImage/>
-  
+
+  {/* <ObjectDetectionGrahpmodel/> */}
     </div>
   );
 }
